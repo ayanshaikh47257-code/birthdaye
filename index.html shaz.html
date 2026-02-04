@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHINZO.exe // CYBER_BIRTHDAY_PROTOCOL</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+    <canvas id="matrix-canvas"></canvas>
+    <div id="geo-canvas-container"></div>
+    <canvas id="pentagon-canvas"></canvas>
+    
+    <div class="crt-overlay">
+        <div class="scanlines"></div>
+        <div class="vignette"></div>
+        <div class="flicker"></div>
+    </div>
+
+    <!-- BOOT SCREEN -->
+    <div id="boot-screen" class="screen">
+        <div class="boot-container">
+            <div class="boot-text" id="boot-text"></div>
+            <div class="boot-progress">
+                <div class="boot-bar" id="boot-bar"></div>
+            </div>
+            <div class="boot-status" id="boot-status">INITIALIZING...</div>
+        </div>
+    </div>
+
+    <!-- INTRO SCREEN -->
+    <div id="intro-screen" class="screen hidden">
+        <div class="terminal-box">
+            <div class="ascii-art">
+   _____ _   _ ___ ____   ___   ____  ____   ___ ____  _____ 
+  |__  /| | | |_ _|  _ \ / _ \ / ___|| __ ) / _ \___ \| ____|
+    / / | |_| || || | | | | | | \___ \|  _ \| | | |__) |  _|  
+   / /_ |  _  || || |_| | |_| |  ___) | |_) | |_| / __/| |___ 
+  /____||_| |_|___|____/ \___/  |____/|____/ \___/_____|_____|
+            </div>
+            <div class="typewriter-text" id="intro-message"></div>
+            <button id="start-btn" class="cyber-btn">
+                <span class="btn-text">> EXECUTE_BIRTHDAY_PROTOCOL.sh</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- BIOMETRIC SCAN SCREEN -->
+    <div id="scan-screen" class="screen hidden">
+        <div class="scan-box">
+            <div class="scanner-frame">
+                <div class="eye-target"></div>
+                <div class="scan-line-v"></div>
+                <div class="scan-line-h"></div>
+                <div class="grid-overlay"></div>
+            </div>
+            <div class="scan-info">
+                <div class="info-line">SUBJECT: SHINZO</div>
+                <div class="info-line">SCANNING RETINA...</div>
+                <div class="info-line hash-line">HASH: <span id="hash-text">CALCULATING...</span></div>
+                <div class="progress-ring">
+                    <svg viewBox="0 0 100 100">
+                        <circle class="ring-bg" cx="50" cy="50" r="45"/>
+                        <circle class="ring-fill" id="ring-fill" cx="50" cy="50" r="45"/>
+                    </svg>
+                    <div class="ring-percent" id="ring-percent">0%</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- QUESTION SCREEN -->
+    <div id="question-screen" class="screen hidden">
+        <div class="firewall-status">
+            <div class="fw-node active" id="fw-1">FW_01</div>
+            <div class="fw-node locked" id="fw-2">FW_02</div>
+            <div class="fw-node locked" id="fw-3">FW_03</div>
+            <div class="fw-node locked" id="fw-4">FW_04</div>
+        </div>
+        
+        <div class="question-box">
+            <div class="q-header">
+                <span class="q-id" id="q-id">Q.01</span>
+                <span class="encrypt-status">ENCRYPTED</span>
+            </div>
+            <div class="q-text glitch" id="q-text" data-text=""></div>
+            <div class="input-area">
+                <span class="prompt">root@shinzo:~$</span>
+                <input type="text" id="answer-input" class="terminal-input" autocomplete="off" spellcheck="false">
+                <span class="cursor">█</span>
+            </div>
+            <button id="submit-btn" class="hack-btn">BREACH_FIREWALL</button>
+            <div id="feedback" class="feedback"></div>
+        </div>
+
+        <!-- Brute Force Overlay -->
+        <div id="brute-overlay" class="overlay hidden">
+            <div class="brute-box">
+                <div class="brute-title">BRUTE_FORCE_ATTACK.exe</div>
+                <div class="code-stream" id="code-stream"></div>
+                <div class="brute-progress">
+                    <div class="brute-bar" id="brute-bar"></div>
+                </div>
+                <div class="brute-status" id="brute-status">INITIALIZING...</div>
+            </div>
+        </div>
+
+        <!-- Result Overlay -->
+        <div id="result-overlay" class="overlay hidden">
+            <div class="result-text" id="result-text"></div>
+            <div class="result-emoji" id="result-emoji"></div>
+        </div>
+    </div>
+
+    <!-- CELEBRATION SCREEN -->
+    <div id="celebration-screen" class="screen hidden">
+        <canvas id="celebration-canvas"></canvas>
+        <div class="celebration-ui">
+            <div class="unlock-message">🔓 ALL_FIREWALLS_BREACHED 🔓</div>
+            <h1 class="birthday-text">🎂 HAPPY_BIRTHDAY_SHINZO 🎂</h1>
+            <div class="cake-emoji">🎂 🎂 🎂</div>
+            <div class="blessing-text" id="blessing-text">May your code always compile... 🚀</div>
+            <div class="file-decrypt">
+                <div>💝 decrypting_love.enc... <span class="ok">[OK]</span></div>
+                <div>🎁 extracting_gifts.bin... <span class="ok">[OK]</span></div>
+                <div>🎉 launching_celebration.exe... <span class="ok">[RUNNING]</span></div>
+                <div>🕉️ ॐ peace_and_happiness.sys... <span class="ok">[ACTIVE]</span></div>
+            </div>
+            <div class="emoji-rain" id="emoji-rain"></div>
+        </div>
+    </div>
+
+    <div class="system-log">
+        <div class="log-title">SYSTEM_LOG</div>
+        <div id="log-content"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
